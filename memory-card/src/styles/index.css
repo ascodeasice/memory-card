@@ -15,7 +15,7 @@ body {
 }
 
 #app>* {
-  padding-left: 10px;
+  padding-left: var(--gapSize);
 }
 
 #header {

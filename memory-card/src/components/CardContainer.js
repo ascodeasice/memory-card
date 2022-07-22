@@ -14,8 +14,9 @@ import Python from '../assets/python.svg';
 import Ruby from '../assets/ruby.svg';
 import Rust from '../assets/rust.svg';
 import Ts from '../assets/ts.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Card from './Card';
+import shuffle from '../modules/shuffle';
 
 const CardContainer = (props) => {
   const { score, setScore, highestScore, setHighestScore, setHeaderText } = props;
@@ -136,32 +137,46 @@ const CardContainer = (props) => {
 
   const resetGame = () => {
     setScore(0);
-    const cardsCopy = structuredClone(cards); // deep copy
+    let cardsCopy = structuredClone(cards); // deep copy
     cardsCopy.forEach((card) => card.clicked = false);
+    cardsCopy = shuffle(cardsCopy);
     setCards(cardsCopy);
   }
 
   const handleClick = (id) => {
     setHeaderText('How to play : click cards you haven\'t clicked')
-    const cardsCopy = structuredClone(cards);// deep copy
-    cardsCopy.forEach((card) => {
+    let cardsCopy = structuredClone(cards);// deep copy
+
+    for (let card of cardsCopy) {
       if (card.id === id) {
         if (!card.clicked) {
+          card.clicked = true;
+
           setHighestScore(Math.max(highestScore, score + 1));
           setScore(score + 1);
-          card.clicked = true;
-          setCards(cardsCopy);
           if (cardsCopy.every((card) => card.clicked)) {
             resetGame();
-            setHeaderText('You win!');
+            setHeaderText('You win! New game has started');
+          } else {
+            cardsCopy = shuffle(cardsCopy);
+            setCards(cardsCopy);
           }
+          return;// prevent using shuffled cards
         } else {
           resetGame();
-          setHeaderText('You lost, starting a new game')
+          setHeaderText('You lost, new game has started');
+          return;
         }
       }
-    })
+    }
   }
+
+  // shuffle when mounted
+  useEffect(() => {
+    let cardsCopy = structuredClone(cards); // deep copy
+    cardsCopy = shuffle(cardsCopy);
+    setCards(cardsCopy);
+  }, []);
 
   return (
     <div id='cardContainer'>
