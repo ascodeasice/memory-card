@@ -1,12 +1,11 @@
-import '../styles/card.css';
-
 const Card = (props) => {
   const { color, src, text } = props;
 
   return (
-    <div className="card" style={`backgroundColor:${color}`}>
+    <div className="card" style={{ background: color }}>
       <img src={src} alt={text} />
-    </div>
+      <h2>{text}</h2>
+    </div >
   )
 }
 
