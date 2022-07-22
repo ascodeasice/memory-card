@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  min-height: 100vh;
+}
+
+#app>* {
+  padding-left: 10px;
+}
+
+#header {
+  background-color: pink;
+}
+
+#cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  background-color: burlywood;
+}
