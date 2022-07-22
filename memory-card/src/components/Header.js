@@ -1,11 +1,15 @@
 const Header = (props) => {
-  const { score, highestScore } = props;
+  const { score, highestScore, text } = props;
   return (
     <div id="header">
-      <h1>Memory Card</h1>
-      <p>How to play : click cards you haven't clicked</p>
-      {/* <p>Score : {score}</p>
-      <p>Highest Score : {highestScore}</p> */}
+      <div id='headerWrapper1'>
+        <h1>Memory Card</h1>
+        <p>{text}</p>
+      </div>
+      <div id="headerWrapper2">
+        <p>Score : {score}</p>
+        <p>Highest Score : {highestScore}</p>
+      </div>
     </div>
   )
 }

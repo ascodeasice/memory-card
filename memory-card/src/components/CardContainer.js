@@ -17,95 +17,157 @@ import Ts from '../assets/ts.svg';
 import { useState } from 'react';
 import Card from './Card';
 
-const CardContainer = () => {
+const CardContainer = (props) => {
+  const { score, setScore, highestScore, setHighestScore, setHeaderText } = props;
   const [cards, setCards] = useState([
     {
       color: 'linear-gradient(135deg, rgba(161,121,220,1) 0%, rgba(40,0,104,1) 100%)',
       src: CSharp,
-      text: 'C#'
+      clicked: false,
+      text: 'C#',
+      id: 0,
     },
     {
       color: 'linear-gradient(135deg, rgba(92,107,192,1) 0%, rgba(40,53,147,1) 100%)',
       src: C,
-      text: 'C'
+      clicked: false,
+      text: 'C',
+      id: 1
     },
     {
       color: 'linear-gradient(135deg, rgba(92,141,188,1) 0%, rgba(26,70,116,1) 100%)',
       src: Cpp,
-      text: 'C++'
+      clicked: false,
+      text: 'C++',
+      id: 2
     },
     {
-      color: 'linear-gradient(90deg, rgba(38,77,228,1) 0%, rgba(41,101,241,1) 100%)',
+      color: 'linear-gradient(180deg, rgba(256,256,256,1) 0%, rgba(41,101,241,1) 100%)',
       src: Css,
-      text: 'CSS'
+      clicked: false,
+      text: 'CSS',
+      id: 3
     },
     {
-      color: '#e44d26',
+      color: 'linear-gradient(180deg, rgba(256,256,256,1) 0%, rgba(247,76,0,1) 60%)',
       src: Html,
-      text: 'HTML'
+      clicked: false,
+      text: 'HTML',
+      id: 4
     },
     {
       color: '#6ad7e5',
       src: Go,
-      text: 'GO'
+      clicked: false,
+      text: 'GO',
+      id: 5
     },
     {
-      color: 'linear-gradient(90deg, rgba(69,58,98,1) 0%, rgba(84,71,120,1) 20%, rgba(143,78,139,1) 100%)',
+      color: 'linear-gradient(90deg, rgba(69,58,98,1) 0%, rgba(84,71,120,1) 10%, rgba(143,78,139,1) 100%)',
       src: Haskell,
-      text: 'Haskell'
+      clicked: false,
+      text: 'Haskell',
+      id: 6
     },
     {
       color: 'linear-gradient(180deg, rgba(248,152,29,1) 0%, rgba(83,130,161,1) 100%)',
       src: Java,
-      text: 'Java'
+      clicked: false,
+      text: 'Java',
+      id: 7
     },
     {
       color: 'linear-gradient(135deg, rgba(241,220,80,1) 20%, rgba(51,51,51,1) 100%)',
       src: Js,
-      text: 'JavaScript'
+      clicked: false,
+      text: 'JavaScript',
+      id: 8
     },
     {
       color: 'linear-gradient(135deg, rgba(50,134,219,1) 0%, rgba(236,124,55,1) 30%, rgba(117,114,226,1) 80%)',
       src: Kotlin,
-      text: 'Kotlin'
+      clicked: false,
+      text: 'Kotlin',
+      id: 9
     },
     {
-      color: '#00007d',
+      color: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,0,125,1) 50%)',
       src: Lua,
-      text: 'Lua'
+      clicked: false,
+      text: 'Lua',
+      id: 10
     },
     {
       color: '#6181b6',
       src: Php,
-      text: 'PHP'
+      clicked: false,
+      text: 'PHP',
+      id: 11
     },
     {
       color: 'linear-gradient(135deg, rgba(55,115,165,1) 0%, rgba(255,206,61,1) 100%)',
       src: Python,
-      text: 'Python'
+      clicked: false,
+      text: 'Python',
+      id: 12
     },
     {
       color: 'linear-gradient(135deg, rgba(168,21,1,1) 0%, rgba(200,27,19,1) 100%)',
       src: Ruby,
-      text: 'Ruby'
+      clicked: false,
+      text: 'Ruby',
+      id: 13
     },
     {
-      color: '#f74c00',
+      color: 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(247,76,0,1) 50%)',
       src: Rust,
-      text: 'Rust'
+      clicked: false,
+      text: 'Rust',
+      id: 14
     },
     {
       color: 'linear-gradient(135deg, rgba(0,122,204,1) 20%, rgba(255,255,255,1) 100%)',
       src: Ts,
-      text: 'TypeScript'
-    },
-
+      clicked: false,
+      text: 'TypeScript',
+      id: 15
+    }
   ])
+
+  const resetGame = () => {
+    setScore(0);
+    const cardsCopy = structuredClone(cards); // deep copy
+    cardsCopy.forEach((card) => card.clicked = false);
+    setCards(cardsCopy);
+  }
+
+  const handleClick = (id) => {
+    setHeaderText('How to play : click cards you haven\'t clicked')
+    const cardsCopy = structuredClone(cards);// deep copy
+    cardsCopy.forEach((card) => {
+      if (card.id === id) {
+        if (!card.clicked) {
+          setHighestScore(Math.max(highestScore, score + 1));
+          setScore(score + 1);
+          card.clicked = true;
+          setCards(cardsCopy);
+          if (cardsCopy.every((card) => card.clicked)) {
+            resetGame();
+            setHeaderText('You win!');
+          }
+        } else {
+          resetGame();
+          setHeaderText('You lost, starting a new game')
+        }
+      }
+    })
+  }
 
   return (
     <div id='cardContainer'>
       {cards.map((card) =>
-        <Card key={card.text} color={card.color} src={card.src} text={card.text} />
+        <Card key={card.id} color={card.color} src={card.src} text={card.text} id={card.id}
+          handleClick={handleClick} />
       )}
     </div>
   )
