@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/memory-card/static/css/main.86bf1574.css",
+    "main.js": "/memory-card/static/js/main.a3b062e5.js",
+    "static/media/lua.svg": "/memory-card/static/media/lua.be494b08867f441cddcd099b85046858.svg",
+    "static/media/ruby.svg": "/memory-card/static/media/ruby.951ad4534a9017e4dc0dd4b5910d1125.svg",
+    "static/media/go.svg": "/memory-card/static/media/go.798e685a0042a2d2a4c7e3bcebb35571.svg",
+    "static/media/rust.svg": "/memory-card/static/media/rust.d47bb91fbce960e18905fdced586d868.svg",
+    "static/media/c-sharp.svg": "/memory-card/static/media/c-sharp.ea991da41422a74b16497acda9d6feca.svg",
+    "static/media/php.svg": "/memory-card/static/media/php.86250ddb9d5bbfb47e9cb43fd2bc7a24.svg",
+    "static/media/python.svg": "/memory-card/static/media/python.a38e5657954f1678f7dfd5ab286abb04.svg",
+    "static/media/html.svg": "/memory-card/static/media/html.794a64840888ff6bcae542f9a401fddf.svg",
+    "static/media/css.svg": "/memory-card/static/media/css.97715c1c82ff638fe06cd7d8c9b746ac.svg",
+    "static/media/cpp.svg": "/memory-card/static/media/cpp.05b4beac905dabd2edb498a01effe51a.svg",
+    "static/media/kotlin.svg": "/memory-card/static/media/kotlin.288d3246c65f0ac69f7d7afcba5d769e.svg",
+    "static/media/c.svg": "/memory-card/static/media/c.22ea43c1dab982d3729c945857896336.svg",
+    "index.html": "/memory-card/index.html",
+    "static/media/ts.svg": "/memory-card/static/media/ts.7c2e5f599fa6ccab4be8a590908ec5bb.svg",
+    "static/media/haskell.svg": "/memory-card/static/media/haskell.81e53b3449483131c6f9f243d09b511e.svg",
+    "static/media/java.svg": "/memory-card/static/media/java.57f5e273eb2375b4766fd58abbff75c5.svg",
+    "static/media/js.svg": "/memory-card/static/media/js.0dd1cf6c80bb500c655a617006c1148a.svg",
+    "static/media/github.svg": "/memory-card/static/media/github.4f33f29afb92d1a50180b6bb751f55dd.svg",
+    "main.86bf1574.css.map": "/memory-card/static/css/main.86bf1574.css.map",
+    "main.a3b062e5.js.map": "/memory-card/static/js/main.a3b062e5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86bf1574.css",
+    "static/js/main.a3b062e5.js"
+  ]
+}
