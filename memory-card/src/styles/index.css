@@ -6,6 +6,7 @@
 
 body {
   margin: 0;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 #app {
@@ -27,12 +28,37 @@ body {
   white-space: nowrap;
 }
 
-#header>div>h1 {
-  font-size: 4vw;
-}
-
 #header>div>p {
   font-size: 2vw;
+}
+
+#headerWrapper1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#heading {
+  font-size: 4vw;
+  color: black;
+}
+
+#github {
+  width: 4vw;
+  height: 4vw;
+}
+
+#githubLink {
+  display: flex;
+}
+
+#headingWrapper {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+#headingWrapper:hover {
+  filter: invert(70%) sepia(14%) saturate(1337%) hue-rotate(351deg) brightness(88%) contrast(84%);
 }
 
 #headerWrapper2 {
@@ -52,7 +78,7 @@ body {
   grid-auto-rows: 20vw;
   gap: var(--gapSize);
   background-color: var(--containerColor);
-  padding: var(--gapSize) var(--gapSize) 0 var(--gapSize);
+  padding: var(--gapSize);
 }
 
 .card {

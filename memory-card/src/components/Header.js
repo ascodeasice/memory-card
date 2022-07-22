@@ -1,9 +1,16 @@
+import Github from '../assets/github.svg';
+
 const Header = (props) => {
   const { score, highestScore, text } = props;
   return (
     <div id="header">
       <div id='headerWrapper1'>
-        <h1>Memory Card</h1>
+        <div id='headingWrapper'>
+          <a id='githubLink' href="https://github.com/ascodeasice/memory-card">
+            <img src={Github} id='github' alt='' />
+          </a>
+          <a id='heading' href='https://github.com/ascodeasice/memory-card'>Memory Card</a>
+        </div>
         <p>{text}</p>
       </div>
       <div id="headerWrapper2">
